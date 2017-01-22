@@ -4,13 +4,14 @@
  import java.util.regex.Pattern;
 
 public class parser {
+    public String fun;
     public char[] parse() {
         Scanner sc=new Scanner(System.in);
         int length,count=0,j=0;
-        String[] keyword={"sinx","cosx","tanx","sin","logx","log","cos"};
-        String[] key={"a","b","c","a_","l","l_","b_"};
+        String[] keyword={"sinx","cosx","tanx","sin","logx","log","cos","tan"};
+        String[] key={"a","b","c","a_","l","l_","b_","c_"};
         System.out.println("enter the funcion");
-        String fun=sc.nextLine();
+         fun=sc.nextLine();
        String[] array=fun.split("[+-/*()^]");
         //String[] array=fun.split("[^a-z]");
         //String[] array1=fun.split("[a-z]");

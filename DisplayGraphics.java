@@ -14,6 +14,7 @@ public class DisplayGraphics extends Canvas{
     public static double array[]=new double[200000];
     public static int top=-1;
     public static  int scale=20;
+    public static String fun;
 
     public void paint(Graphics g) {
         int a=0;
@@ -21,6 +22,14 @@ public class DisplayGraphics extends Canvas{
        g.setColor(Color.red);
         g.drawLine(0,350,900,350); // x-axis
         g.drawLine(450,0,450,900); // y-axis
+        for(int i=-450/scale;i<=450/scale+1;i++) // visual scaling
+        {
+            for(int j=-3;j<=3;j++)
+            {
+                g.drawLine(450+scale*i,350+j,450+scale*i,350+j);
+                g.drawLine(450+j,350+scale*i,450+j,350+scale*i);
+            }
+        }
         setBackground(Color.black);
 
        // setForeground(Color.green);
@@ -35,8 +44,9 @@ public class DisplayGraphics extends Canvas{
             a++;
             g.drawLine(450+X,350-Y,450+X,350-Y);
         }
-
-
+        g.setFont(new Font("Ubuntu", Font.PLAIN, 25));
+        g.setColor(Color.white);
+        g.drawString("f(x)= "+fun, 12,25);
     }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
@@ -46,6 +56,7 @@ public class DisplayGraphics extends Canvas{
 		postfix pf=new postfix();
 		//pf.post(p.parse());
         graph(pf.post(p.parse()));
+        fun=p.fun;
         DisplayGraphics m=new DisplayGraphics();
         JFrame f=new JFrame();
         f.add(m);
